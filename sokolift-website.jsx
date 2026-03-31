@@ -81,7 +81,7 @@ export default function SokoLiftWebsite() {
           <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg, ${C.lime}, ${C.gold})`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F.display, fontWeight: 900, fontSize: 17, color: C.forest }}>S</div>
           <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: 20, color: C.white }}>SokoLift</span>
         </div>
-        <Btn variant="whatsapp" href="https://wa.me/254700000000" style={{ padding: "9px 18px", fontSize: 13 }}><WaIcon /> WhatsApp</Btn>
+        <Btn variant="whatsapp" href="https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp" style={{ padding: "9px 18px", fontSize: 13 }}><WaIcon /> WhatsApp</Btn>
       </nav>
 
       {/* HERO */}
@@ -331,7 +331,7 @@ export default function SokoLiftWebsite() {
                 <h3 style={{ fontFamily: F.display, fontSize: 24, color: C.white, margin: "0 0 10px" }}>Asante, {form.name}!</h3>
                 <p style={{ fontFamily: F.body, fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>Agent will contact <strong style={{ color: C.gold }}>{form.phone}</strong> within 48hrs.</p>
                 <div style={{ marginTop: 18 }}>
-                  <Btn variant="whatsapp" href={`https://wa.me/254700000000?text=Hi, I'm ${form.name} from ${form.county}. I want to join SokoLift.`}><WaIcon /> Chat on WhatsApp</Btn>
+                  <Btn variant="whatsapp" href="https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp"><WaIcon /> Chat on WhatsApp</Btn>
                 </div>
               </div>
             ) : (
@@ -369,7 +369,7 @@ export default function SokoLiftWebsite() {
           <p style={{ fontFamily: F.body, fontSize: 12, color: "rgba(255,255,255,0.3)", lineHeight: 1.6, marginBottom: 16 }}>Bridging Kenyan farmers and urban markets. Farm to fork — no waste, fair prices, instant payments.</p>
           <div style={{ display: "flex", justifyContent: "center", gap: 18, marginBottom: 16 }}>
             {[
-              { label: "WhatsApp", url: "https://wa.me/254700000000" },
+              { label: "WhatsApp", url: "https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp" },
               { label: "Facebook", url: "https://www.facebook.com/profile.php?id=61576525706959" },
               { label: "Instagram", url: "https://www.instagram.com/soko_lift" },
             ].map(l => <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: 1, color: C.lime, textDecoration: "none" }}>{l.label}</a>)}
