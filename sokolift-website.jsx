@@ -16,7 +16,7 @@ const MEDIA = {
 };
 
 const C = { forest: "#1B4332", leaf: "#2D6A4F", lime: "#95D5B2", gold: "#F4A261", sun: "#E9C46A", cream: "#FFF8F0", white: "#FFFFFF", dark: "#0B1D13", muted: "#6B7C72" };
-const F = { display: "'Playfair Display', Georgia, serif", body: "'DM Sans', 'Segoe UI', sans-serif", mono: "'JetBrains Mono', monospace" };
+const F = { display: "'Caveat', cursive", body: "'Inter', 'DM Sans', 'Segoe UI', sans-serif", mono: "'JetBrains Mono', monospace" };
 
 function FadeIn({ children, delay = 0, style = {} }) {
   const ref = useRef(null);
@@ -55,7 +55,7 @@ export default function SokoLiftWebsite() {
 
   useEffect(() => {
     const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
+    link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
     const h = () => setScrolled(window.scrollY > 60);
