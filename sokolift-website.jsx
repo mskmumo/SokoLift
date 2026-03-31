@@ -52,6 +52,8 @@ export default function SokoLiftWebsite() {
   const [sent, setSent] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState(0);
+  const [blogSlide, setBlogSlide] = useState(0);
+  const blogTotal = 6;
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -81,13 +83,16 @@ export default function SokoLiftWebsite() {
           <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg, ${C.lime}, ${C.gold})`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F.display, fontWeight: 900, fontSize: 17, color: C.forest }}>S</div>
           <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: 20, color: C.white }}>SokoLift</span>
         </div>
-        <Btn variant="whatsapp" href="https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp" style={{ padding: "9px 18px", fontSize: 13 }}><WaIcon /> WhatsApp</Btn>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <a onClick={() => document.getElementById("blog")?.scrollIntoView({ behavior: "smooth" })} style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: C.lime, cursor: "pointer", textDecoration: "none" }}>Blog</a>
+          <Btn variant="whatsapp" href="https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp" style={{ padding: "9px 18px", fontSize: 13 }}><WaIcon /> WhatsApp</Btn>
+        </div>
       </nav>
 
       {/* HERO */}
       <section style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: "100px 24px 80px", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${MEDIA.mamaMbogaStall})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.3)" }} />
-        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(165deg, ${C.dark}dd, ${C.forest}bb, ${C.leaf}99)` }} />
+        <img src={MEDIA.sukumaCrate} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,29,19,0.65) 0%, rgba(27,67,50,0.45) 50%, rgba(11,29,19,0.72) 100%)" }} />
         <div style={{ maxWidth: 1000, width: "100%", textAlign: "center", position: "relative", zIndex: 1 }}>
           <FadeIn><span style={{ display: "inline-block", fontFamily: F.mono, fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: C.lime, background: `${C.lime}18`, padding: "8px 20px", borderRadius: 50, marginBottom: 24 }}>🌱 Empowering Kenyan Farmers</span></FadeIn>
           <FadeIn delay={150}>
@@ -317,6 +322,173 @@ export default function SokoLiftWebsite() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ BLOG — HORIZONTAL CAROUSEL ═══════════════ */}
+      <section id="blog" style={{ padding: "90px 24px", background: C.white, overflow: "hidden" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto" }}>
+          <FadeIn><SecTitle label="The SokoLift Story" title="How SokoLift Transformed Mama Grace's Business" sub="Swipe through the story of how one mama mboga vendor changed everything." /></FadeIn>
+
+          {/* Carousel Viewport */}
+          <FadeIn delay={150}>
+            <div style={{ position: "relative" }}>
+              {/* Slides Container */}
+              <div style={{ overflow: "hidden", borderRadius: 20, border: `1px solid ${C.lime}20`, background: C.cream }}>
+                <div style={{ display: "flex", transition: "transform 0.5s cubic-bezier(0.4,0,0.2,1)", transform: `translateX(-${blogSlide * 100}%)` }}>
+
+                  {/* Slide 1: The Problem */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 600 }}>01 / The Problem</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.forest, margin: "10px 0 14px" }}>The Problem Every Mama Mboga Knows Too Well</h3>
+                    <p style={{ fontFamily: F.body, fontSize: 14, color: C.dark, lineHeight: 1.75, margin: "0 0 20px" }}>For 15 years, Mama Grace Wanjiku woke up at 4 AM every morning, headed to Wakulima Market, and hoped for the best. Too often, <strong>half her produce arrived rotten</strong> — her profits literally going to waste.</p>
+                    <div style={{ display: "grid", gap: 8 }}>
+                      {[
+                        "Unreliable supply chains — brokers change prices daily",
+                        "Wild price fluctuations — 50 bob today, 150 tomorrow",
+                        "30-40% produce spoils before you sell it",
+                        "4 AM market stress with poor quality produce",
+                        "Zero transparency — hidden costs & broker markups",
+                      ].map((p, i) => (
+                        <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                          <span style={{ color: "#E74C3C", fontSize: 13, fontWeight: 700, flexShrink: 0 }}>{"\u2715"}</span>
+                          <span style={{ fontFamily: F.body, fontSize: 13, color: C.muted, lineHeight: 1.5 }}>{p}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Slide 2: The Discovery */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 600 }}>02 / The Discovery</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.forest, margin: "10px 0 20px" }}>A Neighbor's Tip Changed Everything</h3>
+                    <div style={{ background: `linear-gradient(135deg, ${C.forest}, ${C.dark})`, borderRadius: 16, padding: "28px 26px", marginBottom: 24 }}>
+                      <p style={{ fontFamily: F.display, fontSize: "clamp(16px, 2.5vw, 21px)", fontWeight: 600, color: C.white, fontStyle: "italic", lineHeight: 1.55, margin: "0 0 12px" }}>{"\u201C"}My neighbor told me about SokoLift. She said, 'Grace, just order on WhatsApp and fresh produce comes to your shop!' I was skeptical, but I decided to try.{"\u201D"}</p>
+                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.gold, margin: 0, fontWeight: 600 }}>{"\u2014"} Mama Grace Wanjiku, Kawangware</p>
+                    </div>
+                    <p style={{ fontFamily: F.body, fontSize: 14, color: C.dark, lineHeight: 1.75, margin: 0 }}>That one decision <strong>transformed her entire business.</strong> Fresh kale. Perfectly graded tomatoes. Clear prices. Delivery right to her kiosk. Less waste, more profit, and finally — time for her family.</p>
+                  </div>
+
+                  {/* Slide 3: How It Works */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 600 }}>03 / The Process</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.forest, margin: "10px 0 18px" }}>How SokoLift Works: 4 Simple Steps</h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+                      {[
+                        { n: "01", t: "Order via WhatsApp", d: "Save our number, send your order, get a response within 30 min.", tag: "No minimum orders" },
+                        { n: "02", t: "We Source & Grade", d: "Fresh from smallholder farmers. Graded A/B/C and quality inspected.", tag: "Farm fresh" },
+                        { n: "03", t: "Doorstep Delivery", d: "Delivered to your kiosk with real-time WhatsApp updates.", tag: "From KES 100" },
+                        { n: "04", t: "Transparent Pricing", d: "No hidden costs. SMS receipts after every M-Pesa transaction.", tag: "60% to farmers" },
+                      ].map((s, i) => (
+                        <div key={i} style={{ background: C.white, borderRadius: 12, padding: "18px 16px", borderLeft: `3px solid ${C.lime}` }}>
+                          <span style={{ fontFamily: F.display, fontSize: 28, fontWeight: 900, color: `${C.lime}30` }}>{s.n}</span>
+                          <h4 style={{ fontFamily: F.display, fontSize: 16, fontWeight: 700, color: C.forest, margin: "4px 0 6px" }}>{s.t}</h4>
+                          <p style={{ fontFamily: F.body, fontSize: 12, color: C.muted, lineHeight: 1.55, margin: "0 0 8px" }}>{s.d}</p>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.leaf, background: `${C.lime}15`, padding: "3px 10px", borderRadius: 50 }}>{s.tag}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Slide 4: Prices */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)", background: `linear-gradient(135deg, ${C.forest}, ${C.leaf})`, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.lime, fontWeight: 600 }}>04 / Pricing</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.white, margin: "10px 0 24px" }}>Today's Grade A Prices</h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 12 }}>
+                      {[
+                        { label: "Kale", price: "KES 50", unit: "per bunch" },
+                        { label: "Tomatoes", price: "KES 120", unit: "per kg" },
+                        { label: "Onions", price: "KES 100", unit: "per kg" },
+                        { label: "Delivery", price: "KES 100", unit: "to your kiosk" },
+                      ].map((item, i) => (
+                        <div key={i} style={{ background: "rgba(255,255,255,0.08)", borderRadius: 12, padding: "18px 14px", textAlign: "center", border: "1px solid rgba(255,255,255,0.1)" }}>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: i === 3 ? C.gold : C.lime }}>{item.label}</span>
+                          <div style={{ fontFamily: F.display, fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 900, color: C.white, margin: "4px 0 2px" }}>{item.price}</div>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{item.unit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Slide 5: Benefits */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 600 }}>05 / Why SokoLift</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.forest, margin: "10px 0 18px" }}>Why 5,000+ Vendors Choose Us</h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
+                      {[
+                        { i: "\u23F0", t: "Save Time", d: "No more 4 AM market runs." },
+                        { i: "\uD83E\uDD6C", t: "Reduce Waste", d: "Fresh, graded produce means less spoilage." },
+                        { i: "\uD83D\uDCCA", t: "Stable Pricing", d: "No surprise broker price hikes." },
+                        { i: "\uD83D\uDD04", t: "Reliable Supply", d: "Consistent quality and delivery." },
+                        { i: "\u2696\uFE0F", t: "Fair Prices", d: "Farmers earn more. You pay less." },
+                        { i: "\uD83D\uDCF1", t: "Pure Convenience", d: "WhatsApp + M-Pesa + doorstep delivery." },
+                      ].map((c, idx) => (
+                        <div key={idx} style={{ background: C.white, padding: "14px 16px", borderRadius: 12, border: `1px solid ${C.lime}15` }}>
+                          <span style={{ fontSize: 22 }}>{c.i}</span>
+                          <h4 style={{ fontFamily: F.display, fontSize: 15, fontWeight: 700, color: C.forest, margin: "4px 0 4px" }}>{c.t}</h4>
+                          <p style={{ fontFamily: F.body, fontSize: 12, color: C.muted, lineHeight: 1.5, margin: 0 }}>{c.d}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Slide 6: Case Study + CTA */}
+                  <div style={{ minWidth: "100%", padding: "clamp(28px, 5vw, 44px)" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 600 }}>06 / Real Results</span>
+                    <h3 style={{ fontFamily: F.display, fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 700, color: C.forest, margin: "10px 0 18px" }}>From the SokoLift Family</h3>
+                    <div style={{ borderRadius: 14, overflow: "hidden", border: `1px solid ${C.lime}20`, marginBottom: 24 }}>
+                      <div style={{ background: `linear-gradient(135deg, ${C.forest}, ${C.dark})`, padding: "16px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: C.leaf, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F.display, fontWeight: 900, fontSize: 18, color: C.white, flexShrink: 0 }}>G</div>
+                        <div>
+                          <h4 style={{ fontFamily: F.display, fontSize: 16, color: C.white, margin: 0 }}>Mama Grace Wanjiku</h4>
+                          <p style={{ fontFamily: F.body, fontSize: 11, color: "rgba(255,255,255,0.5)", margin: "2px 0 0" }}>Kawangware {"\u00B7"} SokoLift vendor since 2022</p>
+                        </div>
+                      </div>
+                      <div style={{ padding: "18px 20px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                        <div>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: "#E74C3C", fontWeight: 700 }}>Before</span>
+                          {["30–40% waste", "Unpredictable income", "4 AM market stress", "Missed school fees"].map((x, i) => (
+                            <p key={i} style={{ fontFamily: F.body, fontSize: 12, color: C.dark, margin: "6px 0 0", lineHeight: 1.4 }}>{"\u2022"} {x}</p>
+                          ))}
+                        </div>
+                        <div>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: C.leaf, fontWeight: 700 }}>After</span>
+                          {["70% less waste", "Stable income", "Orders from kiosk", "School fees on time"].map((x, i) => (
+                            <p key={i} style={{ fontFamily: F.body, fontSize: 12, color: C.dark, margin: "6px 0 0", lineHeight: 1.4 }}>{"\u2022"} {x}</p>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={{ padding: "12px 20px", background: `${C.lime}12` }}>
+                        <p style={{ fontFamily: F.body, fontSize: 13, color: C.dark, lineHeight: 1.55, margin: 0, fontStyle: "italic" }}>{"\u201C"}SokoLift didn't just give me vegetables{"\u2026"} they gave me peace of mind.{"\u201D"}</p>
+                      </div>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <Btn variant="whatsapp" href="https://chat.whatsapp.com/HIxGU1xhifLEUTyEfj0vmp" style={{ fontSize: 14 }}><WaIcon /> WhatsApp Us to Order</Btn>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button onClick={() => setBlogSlide(s => Math.max(0, s - 1))} style={{ position: "absolute", left: -18, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", border: "none", background: blogSlide === 0 ? `${C.forest}15` : C.forest, color: blogSlide === 0 ? C.muted : C.white, cursor: blogSlide === 0 ? "default" : "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>{"\u2039"}</button>
+              <button onClick={() => setBlogSlide(s => Math.min(blogTotal - 1, s + 1))} style={{ position: "absolute", right: -18, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", border: "none", background: blogSlide === blogTotal - 1 ? `${C.forest}15` : C.forest, color: blogSlide === blogTotal - 1 ? C.muted : C.white, cursor: blogSlide === blogTotal - 1 ? "default" : "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>{"\u203A"}</button>
+            </div>
+
+            {/* Dot Indicators */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 18 }}>
+              {Array.from({ length: blogTotal }).map((_, i) => (
+                <button key={i} onClick={() => setBlogSlide(i)} style={{ width: blogSlide === i ? 24 : 8, height: 8, borderRadius: 50, border: "none", background: blogSlide === i ? C.forest : `${C.forest}25`, cursor: "pointer", transition: "all 0.3s", padding: 0 }} />
+              ))}
+            </div>
+
+            {/* Slide labels */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+              {["The Problem", "Discovery", "Process", "Pricing", "Benefits", "Results"].map((label, i) => (
+                <button key={i} onClick={() => setBlogSlide(i)} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: 1, padding: "5px 12px", borderRadius: 50, border: "none", cursor: "pointer", background: blogSlide === i ? C.forest : "transparent", color: blogSlide === i ? C.white : C.muted, transition: "all 0.2s" }}>{label}</button>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
